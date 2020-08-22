@@ -1,19 +1,21 @@
-/*jshint eqeqeq:false */
+/**
+ * Creates a new Store.
+ * @class string Store
+ */
 (function (window) {
 	'use strict';
 
+
 	/**
-	 * Creates a new client side storage object and will create an empty
-	 * collection if no collection already exists.
-	 *
-	 * @param {string} name The name of our DB we want to use
-	 * @param {function} callback Our fake DB uses callbacks because in
-	 * real life you probably would be making AJAX calls
+	 * Crée un nouvel objet de stockage côté client et crée un espace vide si aucun stockage existe.
+	 * @constructs Store
+	 * @param {string} (name) Le nom de notre DB que nous voulons utiliser.
+	 * @param {function} (callback) La fonction de rappel.
 	 */
 	function Store(name, callback) {
 		callback = callback || function () {};
-
-		this._dbName = name;
+		console.log(localStorage);
+		this._dbName = name; 
 
 		if (!localStorage[name]) {
 			var data = {
@@ -26,53 +28,51 @@
 		callback.call(this, JSON.parse(localStorage[name]));
 	}
 
+
 	/**
-	 * Finds items based on a query given as a JS object
-	 *
-	 * @param {object} query The query to match against (i.e. {foo: 'bar'})
-	 * @param {function} callback	 The callback to fire when the query has
-	 * completed running
-	 *
-	 * @example
-	 * db.find({foo: 'bar', hello: 'world'}, function (data) {
-	 *	 // data will return any items that have foo: bar and
-	 *	 // hello: world in their properties
-	 * });
+	 * Trouve les éléments basés sur une requête donnée en tant qu'objet JS
+	 * @param {object} (query) La requête à comparer (c'est-à-dire {foo: 'bar'})
+	 * @param {function} (callback) La fonction de rappel à déclencher lorsque l' exécution
+	 * de la requête est terminée.
+	 * @function find  
 	 */
 	Store.prototype.find = function (query, callback) {
-		if (!callback) {
-			return;
-		}
-
-		var todos = JSON.parse(localStorage[this._dbName]).todos;
-
-		callback.call(this, todos.filter(function (todo) {
-			for (var q in query) {
-				if (query[q] !== todo[q]) {
-					return false;
-				}
-			}
-			return true;
-		}));
+	    if (callback) {
+	        var todos = JSON.parse(localStorage[this._dbName]).todos;
+	        callback.call(
+	            this,
+	            todos.filter(function(todo) {
+	                for (var q in query) {
+	                    if (query[q] !== todo[q]) {
+	                        return false;
+	                    }
+	                }
+	                return true;
+	            })
+	        );
+	    }
 	};
 
+
 	/**
-	 * Will retrieve all data from the collection
-	 *
-	 * @param {function} callback The callback to fire upon retrieving data
+	 * Récupére toutes les données.
+	 * @param {function} (callback) La fonction de rappel lors de la récupération des données.
+	 * @function findAll  
 	 */
 	Store.prototype.findAll = function (callback) {
 		callback = callback || function () {};
 		callback.call(this, JSON.parse(localStorage[this._dbName]).todos);
 	};
 
+
 	/**
-	 * Will save the given data to the DB. If no item exists it will create a new
-	 * item, otherwise it'll simply update an existing item's properties
-	 *
-	 * @param {object} updateData The data to save back into the DB
-	 * @param {function} callback The callback to fire after saving
-	 * @param {number} id An optional param to enter an ID of an item to update
+	 * Sauvegarde les données dans la BD. Si aucun élément n'existe, un nouvel élément
+	 *  sera créé, sinon une mise à jour des propriétés de l' élément existant sera réalisée.
+	 * @param {object} (updateData) Les données à sauvegarder dans la base de données
+	 * @param {function} (callback) La fonction de rappel après l'enregistrement
+	 * @param {number} (id) Un paramètre facultatif correspondantà l' identifiant d'un élément
+	 *                      à mettre à jour
+	 * @function save  
 	 */
 	Store.prototype.save = function (updateData, callback, id) {
 		var data = JSON.parse(localStorage[this._dbName]);
@@ -80,20 +80,10 @@
 
 		callback = callback || function () {};
 
-		// Generate an ID
-	    var newId = ""; 
-	    var charset = "0123456789";
-
-        for (var i = 0; i < 6; i++) {
-     		newId += charset.charAt(Math.floor(Math.random() * charset.length));
-		}
-		
 		// If an ID was actually given, find the item and update each property
 		if (id) {
 			for (var i = 0; i < todos.length; i++) {
-
 				if (todos[i].id === id) {
-				
 					for (var key in updateData) {
 						todos[i][key] = updateData[key];
 					}
@@ -106,26 +96,26 @@
 		} else {
 
     		// Assign an ID
-			updateData.id = parseInt(newId);
-    
+			updateData.id = Date.now();
 
 			todos.push(updateData);
 			localStorage[this._dbName] = JSON.stringify(data);
 			callback.call(this, [updateData]);
 		}
-	};
+    };
+
 
 	/**
-	 * Will remove an item from the Store based on its ID
-	 *
-	 * @param {number} id The ID of the item you want to remove
-	 * @param {function} callback The callback to fire after saving
+	 * Retire un élément en fonction de son ID.
+	 * @param {number} (id) L'identifiant de l'objet que vous souhaitez supprimer.
+	 * @param {function} (callback) Le callback après l'enregistrement.
+	 * @function remove  
 	 */
 	Store.prototype.remove = function (id, callback) {
 		var data = JSON.parse(localStorage[this._dbName]);
 		var todos = data.todos;
 		var todoId;
-		
+
 		for (var i = 0; i < todos.length; i++) {
 			if (todos[i].id == id) {
 				todoId = todos[i].id;
@@ -137,15 +127,15 @@
 				todos.splice(i, 1);
 			}
 		}
-
 		localStorage[this._dbName] = JSON.stringify(data);
 		callback.call(this, todos);
 	};
 
+
 	/**
-	 * Will drop all storage and start fresh
-	 *
-	 * @param {function} callback The callback to fire after dropping the data
+	 * Commence un nouveau stockage
+	 * @param {function} (callback) La fonction de rappel après avoir déposé les données
+	 * @function drop  
 	 */
 	Store.prototype.drop = function (callback) {
 		var data = {todos: []};
@@ -153,7 +143,8 @@
 		callback.call(this, data.todos);
 	};
 
-	// Export to window
+
+	// Exporte vers Window
 	window.app = window.app || {};
 	window.app.Store = Store;
 })(window);

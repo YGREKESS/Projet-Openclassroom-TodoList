@@ -1,48 +1,47 @@
+/**
+ * Creates a new Model.
+ * @class string Model
+ */
 (function (window) {
 	'use strict';
 
+
 	/**
-	 * Creates a new Model instance and hooks up the storage.
-	 *
-	 * @constructor
-	 * @param {object} storage A reference to the client side storage class
+	 * Initialise le model et fait le lien avec le stockage côté client (store).
+	 * @constructs Model
+	 * @param {object} (storage) Une référence à la classe de stockage côté client {@link Store}.
 	 */
 	function Model(storage) {
 		this.storage = storage;
 	}
 
+
 	/**
-	 * Creates a new todo model
-	 *
-	 * @param {string} [title] The title of the task
-	 * @param {function} [callback] The callback to fire after the model is created
+	 * Crée un nouveau model de todo.
+	 * @param {string} (title) Le contenu du todo.
+	 * @param {function} (callback) La fonction de rappel après la création du modèle.
+	 * @function create    
 	 */
 	Model.prototype.create = function (title, callback) {
 		title = title || '';
 		callback = callback || function () {};
 
 		var newItem = {
-			title: title.trim(),
+			title: title.trim(), // enlève les vides
 			completed: false
 		};
 
 		this.storage.save(newItem, callback);
 	};
 
+
 	/**
-	 * Finds and returns a model in storage. If no query is given it'll simply
-	 * return everything. If you pass in a string or number it'll look that up as
-	 * the ID of the model to find. Lastly, you can pass it an object to match
-	 * against.
-	 *
-	 * @param {string|number|object} [query] A query to match models against
-	 * @param {function} [callback] The callback to fire after the model is found
-	 *
-	 * @example
-	 * model.read(1, func); // Will find the model with an ID of 1
-	 * model.read('1'); // Same as above
-	 * //Below will find a model with foo equalling bar and hello equalling world.
-	 * model.read({ foo: 'bar', hello: 'world' });
+	 * Trouve et renvoie un modèle en mémoire. Si aucune requête n'est donnée, il va simplement
+	 * tout retourner. Si vous passez une chaîne ou un numéro, cela ressemblera à l'identifiant
+	 * du modèle à trouver. Enfin, vous pouvez lui passer un objet.
+	 * @param {string|number|object} (query) Une requête pour faire correspondre les modèles
+	 * @param {function} (callback) La fonction de rappel après la découverte du modèle
+	 * @function read    
 	 */
 	Model.prototype.read = function (query, callback) {
 		var queryType = typeof query;
@@ -59,39 +58,44 @@
 		}
 	};
 
+
 	/**
-	 * Updates a model by giving it an ID, data to update, and a callback to fire when
-	 * the update is complete.
-	 *
-	 * @param {number} id The id of the model to update
-	 * @param {object} data The properties to update and their new value
-	 * @param {function} callback The callback to fire when the update is complete.
+	 * Met à jour un modèle en lui attribuant un ID, des données et un callback lorsque la mise à jour
+	 * est terminée.
+	 * @param {number} (id) L' ID du model à mettre à jour.
+	 * @param {object} (data) Les données à mettre à jour et leurs nouvelles valeurs.
+	 * @param {function} (callback) La fonction de rappel quand la mise à jour est terminée.
+	 * @function update    
 	 */
 	Model.prototype.update = function (id, data, callback) {
 		this.storage.save(data, callback, id);
 	};
 
+
 	/**
-	 * Removes a model from storage
-	 *
-	 * @param {number} id The ID of the model to remove
-	 * @param {function} callback The callback to fire when the removal is complete.
+	 * Supprime un modèle du stockage.
+	 * @param {number} (id) L' ID du model à supprimer.
+	 * @param {function} (callback) La fonction de rappel lorsque la suppression est terminée.
+	 * @function remove    
 	 */
 	Model.prototype.remove = function (id, callback) {
 		this.storage.remove(id, callback);
 	};
 
+
 	/**
-	 * WARNING: Will remove ALL data from storage.
-	 *
-	 * @param {function} callback The callback to fire when the storage is wiped.
+	 * Supprime toutes les données du stockage.
+	 * @param {function} (callback) La fonction de rappel quand le stockage est vidé.
+	 * @function removeAll    
 	 */
 	Model.prototype.removeAll = function (callback) {
 		this.storage.drop(callback);
 	};
 
+
 	/**
-	 * Returns a count of all todos
+	 * Renvoie tous les todos
+	 * @function getCount    
 	 */
 	Model.prototype.getCount = function (callback) {
 		var todos = {
@@ -114,7 +118,8 @@
 		});
 	};
 
-	// Export to window
+
+	// Exporte vers Window
 	window.app = window.app || {};
 	window.app.Model = Model;
 })(window);

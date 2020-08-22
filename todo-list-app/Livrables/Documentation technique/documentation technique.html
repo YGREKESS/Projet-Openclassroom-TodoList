@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Home</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+    <link type="text/css" rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+
+<div id="content">
+
+    <div id="text">
+        <h1 class="page-title">Accueil</h1>
+        <h2 class="page-part">1. Introduction</h2>
+        <h3 class="page-part_">1.1 Présentation</h3>
+        <p>TO-DO List est une application qui va vous permettre de lister des tâches à réaliser de manière simple et efficace. Une fois vos tâches listées, vous pourrez les gérer en les modifiant ou bien en les supprimant définitivement. 
+        TO-DO List reprends donc l’idée du fameux post-it de liste de course mais l’a adapté sous la forme d’une application web.</p>
+
+        <h2 class="page-part">2. Aspects techniques</h2>    
+        <h3 class="page-part_">2.1 Langage</h3>
+        <p>L’application a été développée en Vanilla JS, c’est à dire en pure langage JavaScript. On y retrouve donc aucune bibliothèque tierce.</p>
+
+        <h3 class="page-part_">2.2 Tests unitaire</h3>
+        <p>Les tests unitaire ont été réalisés avec le framework Jasmine. Ils ont été réalisés selon la méthode appelée "behavior-driven development" (BDD). Le but de cette méthode étant la communication directe entre les personnes en charge du besoin et l'équipe en charge d'y répondre afin de créer un produit qui réponde parfaitement aux attentes.</p>
+
+        <h3 class="page-part_">2.3 Architecture</h3>
+        <p>Elle a été développée à l’aide du modèle MVC (Model, View, Controller). L’idée principale du MVC est de découper l’application en trois parties interconnectées :
+           <br>
+           <ul>
+               <li><b>Model :</b> son rôle est d'aller récupérer les informations « brutes » dans la base de données, de les organiser et de les assembler pour qu'elles puissent ensuite être traitées par le contrôleur</li>
+               <li><b>View :</b> cette partie se concentre sur l'affichage. Elle se contente de récupérer des variables pour savoir ce qu'elle doit afficher.</li>
+               <li><b>Controller :</b> c'est en quelque sorte l'intermédiaire entre le modèle et la vue : le contrôleur va demander au modèle les données, les analyser, prendre des décisions et renvoyer le texte à afficher à la vue.</li>
+           </ul>
+        <img src="img/Modèle_MVC.png">
+
+        <h3 class="page-part_">2.4 Stockage</h3>
+        <p>La liste de tâche sera sauvegardée en local chez l’utilisateur. Par conséquent, les tâches enregistrées sur un support spécifique ne seront disponibles que sur celui-ci.</p>
+    </div>
+
+    <nav>
+        <h2><a href="index.html">Accueil</a></h2>
+        <h3>Classes</h3>
+        
+            <li>
+                <a href="Todo.html">App</a>
+                <br>
+                <ul>
+                    <li><a href="global.html#setView">setView</a></li>
+                </ul>
+                <br>
+                <br>
+            </li>
+
+            <li>
+                <a href="Store.html">Store</a>
+                <br>
+                <ul>
+                    <li><a href="global.html#drop">drop</a></li>
+                    <li><a href="global.html#find">find</a></li>
+                    <li><a href="global.html#findAll">findAll</a></li>
+                    <li><a href="global.html#save">save</a></li>
+                </ul>
+                <br>
+                <br>
+            </li>
+
+            <li>
+                <a href="Controller.html">Controller</a>
+                <br>
+                <ul>
+                    <li><a href="global.html#_filter">_filter</a></li>
+                    <li><a href="global.html#_updateCount">_updateCount</a></li>
+                    <li><a href="global.html#_updateFilterState">_updateFilterState</a></li>
+                    <li><a href="global.html#addItem">addItem</a></li>
+                    <li><a href="global.html#removeCompletedItems">removeCompletedItems</a></li>
+                    <li><a href="global.html#removeItem">removeItem</a></li>
+                    <li><a href="global.html#setView">setView</a></li>
+                    <li><a href="global.html#showActive">showActive</a></li>
+                    <li><a href="global.html#showAll">showAll</a></li>
+                    <li><a href="global.html#showCompleted">showCompleted</a></li>
+                    <li><a href="global.html#toggleAll">toggleAll</a></li>
+                    <li><a href="global.html#toggleComplete">toggleComplete</a></li>
+                </ul>
+                <br>
+                <br>
+            </li>
+            
+            <li>
+                <a href="Model.html">Model</a>
+                <br>
+                <ul>
+                    <li><a href="global.html#create">create</a></li>
+                    <li><a href="global.html#getCount">getCount</a></li>
+                    <li><a href="global.html#read">read</a></li>
+                    <li><a href="global.html#remove">remove</a></li>
+                    <li><a href="global.html#removeAll">removeAll</a></li>
+                    <li><a href="global.html#update">update</a></li></ul>
+                </ul>
+                <br>
+                <br>
+            </li>
+                
+            <li>
+                <a href="Template.html">Template</a>
+                <br>
+                <ul>
+                    <li><a href="global.html#clearCompletedButton">clearCompletedButton</a></li>
+                    <li><a href="global.html#itemCounter">itemCounter</a></li>
+                    <li><a href="global.html#show">show</a></li>
+                </ul>
+                <br>
+                <br>
+            </li>
+
+            <li>
+                <a href="View.html">View</a>
+                <br>
+                <ul>
+                    <li><a href="global.html#_bindItemEditCancel">_bindItemEditCancel</a></li>
+                    <li><a href="global.html#_bindItemEditDone">_bindItemEditDone</a></li>
+                    <li><a href="global.html#_clearCompletedButton">_clearCompletedButton</a></li>
+                    <li><a href="global.html#_editItem">_editItem</a></li>
+                    <li><a href="global.html#_editItemDone">_editItemDone</a></li>
+                    <li><a href="global.html#_elementComplete">_elementComplete</a></li>
+                    <li><a href="global.html#_itemId">_itemId</a></li>
+                    <li><a href="global.html#_removeItem">_removeItem</a></li>
+                    <li><a href="global.html#_setFilter">_setFilter</a></li>
+                    <li><a href="global.html#bind">bind</a></li>
+                    <li><a href="global.html#render">render</a></li>
+                </ul>
+                <br>
+                <br>
+            </li>
+
+            <li>
+                <a href="Helpers.js.html">Helpers</a>
+                <br>
+                <ul>
+                    <li><a href="global.html#$delegate">$delegate</a></li>
+                    <li><a href="global.html#$on">$on</a></li>
+                    <li><a href="global.html#$parent">$parent</a></li>
+                    <li><a href="global.html#qs">qs</a></li>
+                    <li><a href="global.html#qsa">qsa</a></li>
+                </ul>
+                <br>
+                <br>
+            </li>
+                   
+    </nav>
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.5</a> on Fri Aug 21 2020 17:10:49 GMT+0200 (GMT+02:00)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

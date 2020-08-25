@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: Model</title>
+    <title>JSDoc: Class: Controller</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: Model</h1>
+    <h1 class="page-title">Class: Controller</h1>
 
     
 
@@ -28,7 +28,7 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>Model<span class="signature">((storage))</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>Controller<span class="signature">((model), (view))</span><span class="type-signature"></span></h2>
         
     
 </header>
@@ -41,7 +41,7 @@
     
 
     
-    <h4 class="name" id="Model"><span class="type-signature"></span>new Model<span class="signature">((storage))</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="Controller"><span class="type-signature"></span>new Controller<span class="signature">((model), (view))</span><span class="type-signature"></span></h4>
     
 
     
@@ -49,7 +49,7 @@
 
 
 <div class="description">
-    Initialise le model et fait le lien avec le stockage côté client (store).
+    Le controller permet l' interaction entre le Model et la Vue.
 </div>
 
 
@@ -85,7 +85,7 @@
 
         <tr>
             
-                <td class="name"><code>(storage)</code></td>
+                <td class="name"><code>(model)</code></td>
             
 
             <td class="type">
@@ -101,7 +101,30 @@
 
             
 
-            <td class="description last">Une référence à la classe de stockage côté client <a href="Store.html">Store</a>.</td>
+            <td class="description last">L' instance <a href="Model.html">Model</a>.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>(view)</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">L' instance <a href="View.html">View</a>.</td>
         </tr>
 
     
@@ -142,7 +165,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="model.js.html">model.js</a>, <a href="model.js.html#line14">line 14</a>
+        <a href="controller.js.html">controller.js</a>, <a href="controller.js.html#line15">line 15</a>
     </li></ul></dd>
     
 
@@ -155,7 +178,101 @@
 
 
 
-<h4 class="name" id="update"><span class="type-signature"></span>update<span class="signature">((id), (data), (callback))</span><span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="_activeRoute"><span class="type-signature"></span>_activeRoute<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Stockez une référence à la route active, ce qui nous permet de filtrer à nouveau
+les éléments de tâche tels qu'ils sont marqués comme complets ou incomplets.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="controller.js.html">controller.js</a>, <a href="controller.js.html#line294">line 294</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    <h4 class="name" id="toggleComplete"><span class="type-signature"></span>toggleComplete<span class="signature">((id), (checkbox), (silent))</span><span class="type-signature"></span></h4>
     
 
     
@@ -163,8 +280,7 @@
 
 
 <div class="description">
-    Met à jour un modèle en lui attribuant un ID, des données et un callback lorsque la mise à jour
-est terminée.
+    Met à jour l' affichage des éléments en fonction de leur statut.
 </div>
 
 
@@ -216,14 +332,14 @@ est terminée.
 
             
 
-            <td class="description last">L' ID du model à mettre à jour.</td>
+            <td class="description last">L'ID de l'élément à marquer comme "complété" ou à retirer.</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>(data)</code></td>
+                <td class="name"><code>(checkbox)</code></td>
             
 
             <td class="type">
@@ -239,20 +355,23 @@ est terminée.
 
             
 
-            <td class="description last">Les données à mettre à jour et leurs nouvelles valeurs.</td>
+            <td class="description last">La case à cocher pour validé le statut de l' élément.</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>(callback)</code></td>
+                <td class="name"><code>(silent)</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">function</span>
+<span class="param-type">boolean</span>
+|
+
+<span class="param-type">undefined</span>
 
 
             
@@ -262,7 +381,7 @@ est terminée.
 
             
 
-            <td class="description last">La fonction de rappel quand la mise à jour est terminée.</td>
+            <td class="description last">Empêcher le re-filtrage des éléments de tâche.</td>
         </tr>
 
     
@@ -303,7 +422,7 @@ est terminée.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="model.js.html">model.js</a>, <a href="model.js.html#line62">line 62</a>
+        <a href="controller.js.html">controller.js</a>, <a href="controller.js.html#line202">line 202</a>
     </li></ul></dd>
     
 
@@ -314,8 +433,7 @@ est terminée.
     
 </dl>
 
-    
-    <h4 class="name" id="removeAll"><span class="type-signature"></span>removeAll<span class="signature">((callback))</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="toggleAll"><span class="type-signature"></span>toggleAll<span class="signature">((checkbox))</span><span class="type-signature"></span></h4>
     
 
     
@@ -323,7 +441,7 @@ est terminée.
 
 
 <div class="description">
-    Supprime toutes les données du stockage.
+    Permet de basculer l' activation / désactivation des cases à cocher.
 </div>
 
 
@@ -359,13 +477,13 @@ est terminée.
 
         <tr>
             
-                <td class="name"><code>(callback)</code></td>
+                <td class="name"><code>(checkbox)</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">function</span>
+<span class="param-type">object</span>
 
 
             
@@ -375,7 +493,7 @@ est terminée.
 
             
 
-            <td class="description last">La fonction de rappel quand le stockage est vidé.</td>
+            <td class="description last">La case à cocher pour validé le statut de l' élément.</td>
         </tr>
 
     
@@ -416,7 +534,7 @@ est terminée.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="model.js.html">model.js</a>, <a href="model.js.html#line86">line 86</a>
+        <a href="controller.js.html">controller.js</a>, <a href="controller.js.html#line224">line 224</a>
     </li></ul></dd>
     
 
@@ -427,8 +545,9 @@ est terminée.
     
 </dl>
 
+
     
-    <h4 class="name" id="read"><span class="type-signature"></span>read<span class="signature">((query), (callback))</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="showActive"><span class="type-signature"></span>showActive<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -436,9 +555,263 @@ est terminée.
 
 
 <div class="description">
-    Trouve et renvoie un modèle en mémoire. Si aucune requête n'est donnée, il va simplement
-tout retourner. Si vous passez une chaîne ou un numéro, cela ressemblera à l'identifiant
-du modèle à trouver. Enfin, vous pouvez lui passer un objet.
+    Retourne toutes les tâches actives.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="controller.js.html">controller.js</a>, <a href="controller.js.html#line78">line 78</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="showAll"><span class="type-signature"></span>showAll<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Affiche toutes les tâches.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="controller.js.html">controller.js</a>, <a href="controller.js.html#line66">line 66</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="showCompleted"><span class="type-signature"></span>showCompleted<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Retourne toutes les tâches terminées.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="controller.js.html">controller.js</a>, <a href="controller.js.html#line90">line 90</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="setView"><span class="type-signature"></span>setView<span class="signature">((locationHash))</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Charge les routes possibles ('' | 'active' | 'completed').
 </div>
 
 
@@ -474,19 +847,13 @@ du modèle à trouver. Enfin, vous pouvez lui passer un objet.
 
         <tr>
             
-                <td class="name"><code>(query)</code></td>
+                <td class="name"><code>(locationHash)</code></td>
             
 
             <td class="type">
             
                 
 <span class="param-type">string</span>
-|
-
-<span class="param-type">number</span>
-|
-
-<span class="param-type">object</span>
 
 
             
@@ -496,30 +863,7 @@ du modèle à trouver. Enfin, vous pouvez lui passer un objet.
 
             
 
-            <td class="description last">Une requête pour faire correspondre les modèles</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>(callback)</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">La fonction de rappel après la découverte du modèle</td>
+            <td class="description last">Le hash de la page en cours, peut avoir les valeurs : '' | 'active' | 'completed'.</td>
         </tr>
 
     
@@ -560,7 +904,91 @@ du modèle à trouver. Enfin, vous pouvez lui passer un objet.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="model.js.html">model.js</a>, <a href="model.js.html#line38">line 38</a>
+        <a href="controller.js.html">controller.js</a>, <a href="controller.js.html#line54">line 54</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="removeCompletedItems"><span class="type-signature"></span>removeCompletedItems<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Supprime tous les éléments terminés.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="controller.js.html">controller.js</a>, <a href="controller.js.html#line187">line 187</a>
     </li></ul></dd>
     
 
@@ -596,7 +1024,7 @@ du modèle à trouver. Enfin, vous pouvez lui passer un objet.
     
 
     
-    <h4 class="name" id="remove"><span class="type-signature"></span>remove<span class="signature">((id), (callback))</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="removeItem"><span class="type-signature"></span>removeItem<span class="signature">((id))</span><span class="type-signature"></span></h4>
     
 
     
@@ -604,7 +1032,7 @@ du modèle à trouver. Enfin, vous pouvez lui passer un objet.
 
 
 <div class="description">
-    Supprime un modèle du stockage.
+    Supprime une tâche de la liste.
 </div>
 
 
@@ -656,30 +1084,7 @@ du modèle à trouver. Enfin, vous pouvez lui passer un objet.
 
             
 
-            <td class="description last">L' ID du model à supprimer.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>(callback)</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">La fonction de rappel lorsque la suppression est terminée.</td>
+            <td class="description last">L'ID de l'élément à retirer du DOM et du stockage.</td>
         </tr>
 
     
@@ -720,7 +1125,7 @@ du modèle à trouver. Enfin, vous pouvez lui passer un objet.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="model.js.html">model.js</a>, <a href="model.js.html#line75">line 75</a>
+        <a href="controller.js.html">controller.js</a>, <a href="controller.js.html#line167">line 167</a>
     </li></ul></dd>
     
 
@@ -731,10 +1136,7 @@ du modèle à trouver. Enfin, vous pouvez lui passer un objet.
     
 </dl>
 
-
-
-    
-    <h4 class="name" id="getCount"><span class="type-signature"></span>getCount<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="addItem"><span class="type-signature"></span>addItem<span class="signature">((title))</span><span class="type-signature"></span></h4>
     
 
     
@@ -742,72 +1144,8 @@ du modèle à trouver. Enfin, vous pouvez lui passer un objet.
 
 
 <div class="description">
-    Renvoie tous les todos
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="model.js.html">model.js</a>, <a href="model.js.html#line96">line 96</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-    <h4 class="name" id="create"><span class="type-signature"></span>create<span class="signature">((title), (callback))</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Crée un nouveau model de todo.
+    Evénement à déclencher lorsque vous souhaitez ajouter un élément. Il suffit de passer
+dans l'objet événement et il va gérer l'insertion DOM et la sauvegarde du nouvel élément.
 </div>
 
 
@@ -863,16 +1201,195 @@ du modèle à trouver. Enfin, vous pouvez lui passer un objet.
         </tr>
 
     
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="controller.js.html">controller.js</a>, <a href="controller.js.html#line102">line 102</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+    <h4 class="name" id="_updateCount"><span class="type-signature"></span>_updateCount<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Modifie la page en fonction du nombre de todo.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="controller.js.html">controller.js</a>, <a href="controller.js.html#line240">line 240</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="_updateFilterState"><span class="type-signature"></span>_updateFilterState<span class="signature">((currentPage))</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Met à jour les routes dans url.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
 
         <tr>
             
-                <td class="name"><code>(callback)</code></td>
+                <td class="name"><code>(currentPage)</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">function</span>
+<span class="param-type">string</span>
 
 
             
@@ -882,7 +1399,7 @@ du modèle à trouver. Enfin, vous pouvez lui passer un objet.
 
             
 
-            <td class="description last">La fonction de rappel après la création du modèle.</td>
+            <td class="description last">'' || active || completed La route de la page actuelle.</td>
         </tr>
 
     
@@ -923,7 +1440,7 @@ du modèle à trouver. Enfin, vous pouvez lui passer un objet.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="model.js.html">model.js</a>, <a href="model.js.html#line19">line 19</a>
+        <a href="controller.js.html">controller.js</a>, <a href="controller.js.html#line284">line 284</a>
     </li></ul></dd>
     
 
@@ -932,31 +1449,7 @@ du modèle à trouver. Enfin, vous pouvez lui passer un objet.
     
 
     
-</dl>
-
-
-
-
-
-
-
-
-    
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
+</dl> 
 
     
 
@@ -973,7 +1466,7 @@ du modèle à trouver. Enfin, vous pouvez lui passer un objet.
 </div>
 
 <nav>
-    <h2><a href="index.html">Accueil</a></h2>
+    <h2><a href="../Documentation_technique.html">Accueil</a></h2>
     <h3>Classes</h3>
     
         <li>
@@ -1068,7 +1561,7 @@ du modèle à trouver. Enfin, vous pouvez lui passer un objet.
         </li>
 
         <li>
-            <a href="Helpers.js.html">Helpers</a>
+            <a href="global.html">Helpers</a>
             <br>
             <ul>
                 <li><a href="global.html#$delegate">$delegate</a></li>

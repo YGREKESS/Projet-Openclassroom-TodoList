@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: Template</title>
+    <title>JSDoc: Class: Todo</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: Template</h1>
+    <h1 class="page-title">Class: Todo</h1>
 
     
 
@@ -28,7 +28,7 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>Template<span class="signature">()</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>Todo<span class="signature">((name))</span><span class="type-signature"></span></h2>
         
     
 </header>
@@ -41,7 +41,7 @@
     
 
     
-    <h4 class="name" id="Template"><span class="type-signature"></span>new Template<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="Todo"><span class="type-signature"></span>new Todo<span class="signature">((name))</span><span class="type-signature"></span></h4>
     
 
     
@@ -49,73 +49,7 @@
 
 
 <div class="description">
-    Définit les valeurs par défaut du template
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="template.js.html">template.js</a>, <a href="template.js.html#line37">line 37</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-    
-    <h4 class="name" id="show"><span class="type-signature"></span>show<span class="signature">((data))</span><span class="type-signature"> &rarr; {string}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Récupère le template et l'adapte en fonction de la tâche créée.
+    Configure une nouvelle Todo list.
 </div>
 
 
@@ -151,162 +85,15 @@
 
         <tr>
             
-                <td class="name"><code>(data)</code></td>
+                <td class="name"><code>(name)</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">L'objet contenant les données que vous souhaitez adapter au template.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="template.js.html">template.js</a>, <a href="template.js.html#line48">line 48</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    Template HTML correspondant à l' élément <li>
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
 <span class="param-type">string</span>
 
 
-    </dd>
-</dl>
-
-    <h4 class="name" id="itemCounter"><span class="type-signature"></span>itemCounter<span class="signature">((activeTodos))</span><span class="type-signature"> &rarr; {string}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Affiche un compteur du nombre de tâches à terminer.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>(activeTodos)</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
             
             </td>
 
@@ -314,7 +101,7 @@
 
             
 
-            <td class="description last">Le nombre de todos actifs.</td>
+            <td class="description last">Le nom de votre nouvelle TODO list.</td>
         </tr>
 
     
@@ -355,7 +142,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="template.js.html">template.js</a>, <a href="template.js.html#line79">line 79</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line14">line 14</a>
     </li></ul></dd>
     
 
@@ -368,7 +155,7 @@
 
 
 
-    <h4 class="name" id="clearCompletedButton"><span class="type-signature"></span>clearCompletedButton<span class="signature">((completedTodos))</span><span class="type-signature"> &rarr; {string}</span></h4>
+    <h4 class="name" id="setView"><span class="type-signature"></span>setView<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -376,7 +163,7 @@
 
 
 <div class="description">
-    Met à jour le texte dans le bouton "Clear completed".
+    Ajoute la route de la page dans l' url ''|| active || completed
 </div>
 
 
@@ -385,55 +172,6 @@
 
 
 
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>(completedTodos)</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Le nombre de todos complété(s).</td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -469,7 +207,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="template.js.html">template.js</a>, <a href="template.js.html#line92">line 92</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line28">line 28</a>
     </li></ul></dd>
     
 
@@ -485,35 +223,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    Chaîne contenant le nombre.
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">string</span>
-
-
-    </dd>
-</dl>
 
 
 
@@ -556,7 +265,7 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Accueil</a></h2>
+    <h2><a href="../Documentation_technique.html">Accueil</a></h2>
     <h3>Classes</h3>
     
         <li>
@@ -651,7 +360,7 @@
         </li>
 
         <li>
-            <a href="Helpers.js.html">Helpers</a>
+            <a href="global.html">Helpers</a>
             <br>
             <ul>
                 <li><a href="global.html#$delegate">$delegate</a></li>

@@ -184,7 +184,7 @@ describe('Controller', function () {
 		// setView permet de séléctionner toutes les routes
 		subject.setView('');
 
-		// Vérifie que le filtre "All" est bien surligné quand l'utilisateur n'a activé aucun onglet.
+		// Vérifie que le filtre "All" est bien mis en avant quand l'utilisateur n'a activé aucun onglet.
 		expect(view.render).toHaveBeenCalledWith('setFilter', '');
 	});
 
@@ -192,11 +192,20 @@ describe('Controller', function () {
 		// TODO: write test
 		setUpModel([]);
 
-		// setView permet de sélectionner une route précise
+		// setView permet de sélectionner une route précise "Active"
 		subject.setView('#/active');
 
-		// Vérifie que le filtre "Active" est bien surligné quand l'utilisateur est sur l'onglet des tâches "active".
+		// Vérifie que le filtre "Active" est bien mis en avant quand l'utilisateur est sur l'onglet des tâches actives.
 		expect(view.render).toHaveBeenCalledWith('setFilter', 'active');
+	});
+
+	it('should highlight "Completed" filter when switching to completed view', function () { //===================> TEST AJOUTE : Vérifie que le filtre "Completed" est bien mis en avant quand l'utilisateur est sur l'onglet des tâches complétées.
+
+		setUpModel([]);
+
+		subject.setView('#/completed');
+
+		expect(view.render).toHaveBeenCalledWith('setFilter', 'completed');
 	});
 
 	describe('toggle all', function () {

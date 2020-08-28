@@ -100,7 +100,7 @@ describe('Controller', function () {
 			expect(view.render).toHaveBeenCalledWith('showEntries', [todo]);
 		});
 
-		it('should show active entries to the model', function () {  //===================> TEST AJOUTE : Test si la tâche s'implante bien dans le stockage
+		it('should read active entries to the model', function () {  //===================> TEST AJOUTE : Test si la tâche s'implante bien dans le stockage
 			
 			// test le model
 			var todo = {title: 'my todo', completed: false};
@@ -122,7 +122,7 @@ describe('Controller', function () {
 			expect(view.render).toHaveBeenCalledWith('showEntries', [todo]);
 		});
 
-		it('should show completed entries to the model', function () {	//===================> TEST AJOUTE : Test si la tâche s'implante bien dans le stockage
+		it('should read completed entries to the model', function () {	//===================> TEST AJOUTE : Test si la tâche s'implante bien dans le stockage
 
 			// test le model
 			var todo = {title: 'my todo', completed: true};
